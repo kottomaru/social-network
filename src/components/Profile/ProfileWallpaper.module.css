@@ -1,0 +1,8 @@
+.wallpaper {
+  padding: 2em;
+}
+
+.wallpaper img {
+  border-radius: 1em;
+  width: 100%;
+}

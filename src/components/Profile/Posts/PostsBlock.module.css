@@ -1,0 +1,29 @@
+.userPosts {
+  padding: 2em;
+}
+
+.postWrapper {
+  background-color: white;
+  padding: 1em;
+  border-radius: 1em;
+}
+
+.profilePostTitle span {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.postCreate {
+  margin-top: 1em;
+}
+
+.postInput {
+  width: 80%;
+  padding: 1em;
+  border: none;
+  background-color: #f2f2f2;
+}
+
+.posts {
+  padding: 2em;
+}

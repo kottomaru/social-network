@@ -1,0 +1,17 @@
+.nav {
+  grid-area: nav;
+}
+
+.item {
+  padding: 1em;
+  color: gray;
+}
+
+.item:hover {
+  color: #424242;
+  cursor: pointer;
+}
+
+.active {
+  font-weight: bold;
+}

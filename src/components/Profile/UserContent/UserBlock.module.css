@@ -1,0 +1,33 @@
+.user {
+  padding: 2em;
+}
+
+.userAvatar img {
+  width: 15em;
+  height: 15em;
+  border-radius: 1em;
+}
+
+.userMainInfo {
+  display: flex;
+}
+
+.userDescription {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1em;
+  background-color: white;
+  border-radius: 1em;
+  align-items: center;
+  width: 20em;
+  justify-content: space-around;
+}
+
+.userDescription span {
+  color: black;
+  font-weight: bold;
+}
+
+.userDescription {
+  color: #1f1f1f;
+}
