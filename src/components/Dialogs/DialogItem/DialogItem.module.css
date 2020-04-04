@@ -1,0 +1,12 @@
+.item {
+  padding: 1em;
+}
+
+.item a {
+  color: gray;
+  text-decoration: none;
+}
+
+.active {
+  font-weight: bold;
+}

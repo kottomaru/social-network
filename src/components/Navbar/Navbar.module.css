@@ -4,6 +4,10 @@
 
 .item {
   padding: 1em;
+}
+
+.item a {
+  text-decoration: none;
   color: gray;
 }
 
@@ -12,6 +16,6 @@
   cursor: pointer;
 }
 
-.active {
+.item a.active {
   font-weight: bold;
 }

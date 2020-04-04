@@ -9,6 +9,9 @@ const Post = (props) => {
       </div>
       <div className={styles.itemTitle}>
         {props.title}
+        <div className={styles.likes}>
+          {props.likes} likes
+        </div>
       </div>
     </div>
   );

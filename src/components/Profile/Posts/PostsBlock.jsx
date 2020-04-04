@@ -21,10 +21,12 @@ const PostsBlock = (props) => {
         <Post
           src='https://profilepicture7.com/img/img_dongman/2/1075497004.jpg'
           title='About my weekend'
+          likes='17'
         />
         <Post
           src='https://profilepicture7.com/img/img_dongman/2/1075497004.jpg'
           title='Some picture with my crush'
+          likes='31'
         />
       </div>
     </div>
