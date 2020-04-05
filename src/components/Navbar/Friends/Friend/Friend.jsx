@@ -5,9 +5,9 @@ const Friend = (props) => {
   return (
     <div className={styles.item}>
       <img src={props.img} />
-        <div>
-          {props.name}
-        </div>
+      <div>
+        {props.name}
+      </div>
     </div>
   );
 }

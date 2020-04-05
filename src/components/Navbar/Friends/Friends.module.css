@@ -1,10 +1,17 @@
 .title {
   text-align: center;
   text-transform: uppercase;
-  font-weight: bold;
   font-size: 18px;
+  color: #333;
 }
 
 .container {
   margin-top: 2em;
+}
+
+.elements {
+  padding: 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }

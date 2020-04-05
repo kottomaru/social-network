@@ -12,7 +12,9 @@ const Friends = (props) => {
       <div className={styles.title}>
         Friends
       </div>
-      {friendsElements}
+      <div className={styles.elements}>
+        {friendsElements}
+      </div>
     </div>
   );
 }
