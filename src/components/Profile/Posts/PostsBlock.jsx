@@ -4,6 +4,9 @@ import Button from '../../Button';
 import Post from './Post/Post';
 
 const PostsBlock = (props) => {
+  let postsElements = props.state.postsData
+    .map((post) => <Post src={post.src} title={post.title} likes={post.likes} />);
+
   return (
     <div className={styles.userPosts}>
       <div className={styles.postWrapper}>
@@ -18,16 +21,7 @@ const PostsBlock = (props) => {
         </div>
       </div>
       <div className={styles.posts}>
-        <Post
-          src='https://profilepicture7.com/img/img_dongman/2/1075497004.jpg'
-          title='About my weekend'
-          likes='17'
-        />
-        <Post
-          src='https://profilepicture7.com/img/img_dongman/2/1075497004.jpg'
-          title='Some picture with my crush'
-          likes='31'
-        />
+        {postsElements}
       </div>
     </div>
   );

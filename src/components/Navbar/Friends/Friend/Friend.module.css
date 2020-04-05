@@ -1,0 +1,11 @@
+.item img {
+  width: 4em;
+  height: 4em;
+  border-radius: 4em;
+}
+
+.item {
+  margin-top: 2em;
+  text-align: center;
+  color: #444;
+}

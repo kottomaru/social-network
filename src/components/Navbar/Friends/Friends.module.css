@@ -1,0 +1,10 @@
+.title {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.container {
+  margin-top: 2em;
+}

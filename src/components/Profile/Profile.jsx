@@ -4,7 +4,7 @@ import ProfileWallpaper from './ProfileWallpaper';
 import UserBlock from './UserContent/UserBlock';
 import PostsBlock from './Posts/PostsBlock';
 
-const Profile = () => {
+const Profile = (props) => {
   return (
     <div className={styles.content}>
       <ProfileWallpaper src='https://wallpaperaccess.com/full/21591.jpg' />
@@ -14,7 +14,7 @@ const Profile = () => {
         name='Lao Yong'
         birth='10.10.2000'
       />
-      <PostsBlock />
+      <PostsBlock state={props.state} />
     </div>
   );
 };
