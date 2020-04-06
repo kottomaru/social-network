@@ -9,6 +9,21 @@
 
 .messages {
   padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 70vh;
 }
 
 .message {}
+
+.messageInput textarea {
+  resize: none;
+  width: 80%;
+}
+
+.messageInput {
+  display: flex;
+  width: 50%;
+  justify-content: space-around;
+}

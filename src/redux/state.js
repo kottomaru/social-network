@@ -38,4 +38,15 @@ let state = {
   }
 }
 
+export let addPost = (postTitle) => {
+  let post = {
+    id: 3,
+    src: 'https://profilepicture7.com/img/img_dongman/2/1075497004.jpg',
+    title: postTitle,
+    likes: 0
+  };
+
+  state.profile.postsData.push(post);
+}
+
 export default state;

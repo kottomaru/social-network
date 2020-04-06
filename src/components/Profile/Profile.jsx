@@ -14,7 +14,7 @@ const Profile = (props) => {
         name='Lao Yong'
         birth='10.10.2000'
       />
-      <PostsBlock state={props.state} />
+      <PostsBlock addPost={props.addPost} state={props.state} />
     </div>
   );
 };

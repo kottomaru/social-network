@@ -10,6 +10,7 @@ import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 
+
 function App(props) {
   return (
     <BrowserRouter>
@@ -19,7 +20,7 @@ function App(props) {
         <div className='content'>
           <Route
             path='/profile'
-            render={() => <Profile state={props.state.profile} />} />
+            render={() => <Profile state={props.state.profile} addPost={props.addPost} />} />
           <Route
             path='/dialogs'
             render={() => <Dialogs state={props.state.messages} />} />
