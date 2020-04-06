@@ -1,3 +1,5 @@
+import { rerenderEntireTree } from '../render';
+
 let state = {
   profile: {
     postsData: [
@@ -13,7 +15,8 @@ let state = {
         title: 'Some picture with my crush',
         likes: '31'
       }
-    ]
+    ],
+    newPostTitle: ''
   },
   messages: {
     dialogsData: [
@@ -42,11 +45,18 @@ export let addPost = (postTitle) => {
   let post = {
     id: 3,
     src: 'https://profilepicture7.com/img/img_dongman/2/1075497004.jpg',
-    title: postTitle,
+    title: state.profile.newPostTitle,
     likes: 0
   };
 
   state.profile.postsData.push(post);
+  state.profile.newPostTitle = '';
+  rerenderEntireTree(state);
+}
+
+export let updatePostTitle = (text) => {
+  state.profile.newPostTitle = text;
+  rerenderEntireTree(state);
 }
 
 export default state;

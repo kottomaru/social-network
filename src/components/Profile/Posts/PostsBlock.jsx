@@ -13,6 +13,11 @@ const PostsBlock = (props) => {
     props.addPost(post);
   }
 
+  let textTitleChange = () => {
+    let text = createNewPost.current.value;
+    props.updatePostTitle(text);
+  }
+
   return (
     <div className={styles.userPosts}>
       <div className={styles.postWrapper}>
@@ -20,7 +25,7 @@ const PostsBlock = (props) => {
           <span>My posts</span>
         </div>
         <div className={styles.postCreate}>
-          <textarea ref={createNewPost} className={styles.postInput}></textarea>
+          <textarea value={props.newPostTitle} onChange={textTitleChange} ref={createNewPost} className={styles.postInput}></textarea>
           <button className={styles.button} onClick={ addNewPost }>CREATE POST</button>
         </div>
       </div>
