@@ -10,8 +10,8 @@
 .messages {
   padding: 1em;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: space-around;
   height: 70vh;
 }
 
@@ -26,4 +26,5 @@
   display: flex;
   width: 50%;
   justify-content: space-around;
+  height: 2em;
 }

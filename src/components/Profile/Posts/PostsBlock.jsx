@@ -2,6 +2,8 @@ import React from 'react';
 import styles from './PostsBlock.module.css';
 import Post from './Post/Post';
 
+import { addPostAction, updatePostTitleAction } from '../../../redux/state';
+
 const PostsBlock = (props) => {
   let postsElements = props.state.postsData
     .map((post) => <Post src={post.src} title={post.title} likes={post.likes} />);
@@ -10,13 +12,13 @@ const PostsBlock = (props) => {
 
   let addNewPost = () => {
     let post = createNewPost.current.value;
-    let action = { type: 'ADD_POST' };
+    let action = addPostAction();
     props.dispatch(action);
   }
 
   let textTitleChange = () => {
     let text = createNewPost.current.value;
-    let action = { type: 'UPDATE_POST_TITLE', text: text };
+    let action = updatePostTitleAction(text);
     props.dispatch(action);
   }
 

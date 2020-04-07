@@ -5,6 +5,8 @@ import { NavLink } from 'react-router-dom';
 import DialogItem from './DialogItem/DialogItem';
 import Message from './DialogItem/Message';
 
+import { addMessageAction, updateMessageTextAction } from '../../redux/state';
+
 const Dialogs = (props) => {
   let dialogsElements = props.state.dialogsData
     .map((dialog) => <DialogItem id={dialog.id} name={dialog.name} />);
@@ -16,7 +18,14 @@ const Dialogs = (props) => {
 
   let addMessage = () => {
     let mes = newMessage.current.value;
-    alert(mes);
+    let action = addMessageAction();
+    props.dispatch(action);
+  }
+
+  let changeMessageText = () => {
+    let text = newMessage.current.value;
+    let action = updateMessageTextAction(text);
+    props.dispatch(action);
   }
 
   return (
@@ -29,7 +38,7 @@ const Dialogs = (props) => {
           {messagesElements}
         </div>
         <div className={styles.messageInput}>
-          <textarea ref={newMessage}></textarea>
+          <textarea onChange={ changeMessageText } value={props.state.newMessageText} ref={newMessage}></textarea>
           <button onClick={ addMessage }>SEND</button>
         </div>
       </div>

@@ -1,3 +1,8 @@
+export const ADD_POST = 'ADD_POST';
+export const UPDATE_POST_TITLE = 'UPDATE_POST_TITLE';
+export const ADD_MESSAGE = 'ADD_MESSAGE';
+export const UPDATE_MESSAGE_TEXT = 'UPDATE_MESSAGE_TEXT';
+
 let store = {
   _state: {
     profile: {
@@ -29,7 +34,8 @@ let store = {
         { id: 1, text: 'Hello' },
         { id: 2, text: 'How are you?' },
         { id: 3, text: 'What is your favorite pet?' }
-      ]
+      ],
+      newMessageText: ''
     },
     sidebar: {
       friends: [
@@ -48,7 +54,7 @@ let store = {
   },
 
   dispatch(action) {
-    if (action.type === 'ADD_POST') {
+    if (action.type === ADD_POST) {
       let post = {
         id: 3,
         src: 'https://profilepicture7.com/img/img_dongman/2/1075497004.jpg',
@@ -59,8 +65,19 @@ let store = {
       this._state.profile.postsData.push(post);
       this._state.profile.newPostTitle = '';
       this._rerenderEntireTree(this._state);
-    } else if (action.type === 'UPDATE_POST_TITLE') {
+
+    } else if (action.type === UPDATE_POST_TITLE) {
       this._state.profile.newPostTitle = action.text;
+      this._rerenderEntireTree(this._state);
+
+    } else if (action.type === ADD_MESSAGE) {
+      let message = { id: 4, text: this._state.messages.newMessageText };
+      this._state.messages.messagesData.push(message);
+      this._state.messages.newMessageText = '';
+      this._rerenderEntireTree(this._state);
+
+    } else if (action.type === UPDATE_MESSAGE_TEXT) {
+      this._state.messages.newMessageText = action.text;
       this._rerenderEntireTree(this._state);
     }
   },
@@ -68,5 +85,17 @@ let store = {
     this._rerenderEntireTree = observer;
   }
 }
+
+export const addPostAction = () => ({ type: ADD_POST });
+export const updatePostTitleAction = (text) => ({
+  type: UPDATE_POST_TITLE,
+  text: text
+});
+
+export const addMessageAction = () => ({ type: ADD_MESSAGE });
+export const updateMessageTextAction = (text) => ({
+  type: UPDATE_MESSAGE_TEXT,
+  text: text
+});
 
 export default store;
