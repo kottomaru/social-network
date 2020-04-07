@@ -23,8 +23,7 @@ function App(props) {
               <Profile
                 newPostTitle={props.state.profile.newPostTitle}
                 state={props.state.profile}
-                addPost={props.addPost}
-                updatePostTitle={props.updatePostTitle} />} />
+                dispatch={props.dispatch} />} />
           <Route
             path='/dialogs'
             render={() => <Dialogs state={props.state.messages} />} />

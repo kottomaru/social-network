@@ -39,27 +39,30 @@ let store = {
       ]
     }
   },
-  getState() {
-    return this._state;
-  },
+
   _rerenderEntireTree() {
 
   },
-  addPost(postTitle) {
-    let post = {
-      id: 3,
-      src: 'https://profilepicture7.com/img/img_dongman/2/1075497004.jpg',
-      title: this._state.profile.newPostTitle,
-      likes: 0
-    };
-
-    this._state.profile.postsData.push(post);
-    this._state.profile.newPostTitle = '';
-    this._rerenderEntireTree(this._state);
+  getState() {
+    return this._state;
   },
-  updatePostTitle(text) {
-    this._state.profile.newPostTitle = text;
-    this._rerenderEntireTree(this._state);
+
+  dispatch(action) {
+    if (action.type === 'ADD_POST') {
+      let post = {
+        id: 3,
+        src: 'https://profilepicture7.com/img/img_dongman/2/1075497004.jpg',
+        title: this._state.profile.newPostTitle,
+        likes: 0
+      };
+
+      this._state.profile.postsData.push(post);
+      this._state.profile.newPostTitle = '';
+      this._rerenderEntireTree(this._state);
+    } else if (action.type === 'UPDATE_POST_TITLE') {
+      this._state.profile.newPostTitle = action.text;
+      this._rerenderEntireTree(this._state);
+    }
   },
   subscribe(observer) {
     this._rerenderEntireTree = observer;

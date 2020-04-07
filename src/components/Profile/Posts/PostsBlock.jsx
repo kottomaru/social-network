@@ -10,12 +10,14 @@ const PostsBlock = (props) => {
 
   let addNewPost = () => {
     let post = createNewPost.current.value;
-    props.addPost(post);
+    let action = { type: 'ADD_POST' };
+    props.dispatch(action);
   }
 
   let textTitleChange = () => {
     let text = createNewPost.current.value;
-    props.updatePostTitle(text);
+    let action = { type: 'UPDATE_POST_TITLE', text: text };
+    props.dispatch(action);
   }
 
   return (
