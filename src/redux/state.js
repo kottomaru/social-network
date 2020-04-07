@@ -1,3 +1,6 @@
+import profileReducer from './profile-reducer';
+import dialogsReducer from './dialogs-reducer';
+
 export const ADD_POST = 'ADD_POST';
 export const UPDATE_POST_TITLE = 'UPDATE_POST_TITLE';
 export const ADD_MESSAGE = 'ADD_MESSAGE';
@@ -54,32 +57,10 @@ let store = {
   },
 
   dispatch(action) {
-    if (action.type === ADD_POST) {
-      let post = {
-        id: 3,
-        src: 'https://profilepicture7.com/img/img_dongman/2/1075497004.jpg',
-        title: this._state.profile.newPostTitle,
-        likes: 0
-      };
+    this._state.profile = profileReducer(this._state.profile, action);
+    this._state.messages = dialogsReducer(this._state.messages, action);
 
-      this._state.profile.postsData.push(post);
-      this._state.profile.newPostTitle = '';
-      this._rerenderEntireTree(this._state);
-
-    } else if (action.type === UPDATE_POST_TITLE) {
-      this._state.profile.newPostTitle = action.text;
-      this._rerenderEntireTree(this._state);
-
-    } else if (action.type === ADD_MESSAGE) {
-      let message = { id: 4, text: this._state.messages.newMessageText };
-      this._state.messages.messagesData.push(message);
-      this._state.messages.newMessageText = '';
-      this._rerenderEntireTree(this._state);
-
-    } else if (action.type === UPDATE_MESSAGE_TEXT) {
-      this._state.messages.newMessageText = action.text;
-      this._rerenderEntireTree(this._state);
-    }
+    this._rerenderEntireTree(this._state);
   },
   subscribe(observer) {
     this._rerenderEntireTree = observer;
