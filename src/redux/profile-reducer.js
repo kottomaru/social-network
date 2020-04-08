@@ -28,14 +28,16 @@ const profileReducer = (state = initialState, action) => {
         title: state.newPostTitle,
         likes: 0
       };
-      let stateAddCopy = {...state};
-      stateAddCopy.postsData.push(post);
-      stateAddCopy.newPostTitle = '';
-      return stateAddCopy;
+      return {
+        ...state,
+        newPostTitle: '',
+        postsData: [...state.postsData, post]
+      }
     case UPDATE_POST_TITLE:
-      let stateUpdCopy = {...state};
-      stateUpdCopy.newPostTitle = action.text;
-      return stateUpdCopy;
+      return {
+        ...state,
+        newPostTitle: action.text
+      }
     default:
       return state;
   }
