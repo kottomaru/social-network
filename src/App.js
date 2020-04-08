@@ -20,10 +20,7 @@ function App(props) {
           <Route
             path='/profile'
             render={() =>
-              <Profile
-                newPostTitle={props.state.profile.newPostTitle}
-                state={props.state.profile}
-                dispatch={props.dispatch} />} />
+              <Profile store={props.store} />} />
           <Route
             path='/dialogs'
             render={() =>

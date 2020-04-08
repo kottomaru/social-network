@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Profile.module.css';
 import ProfileWallpaper from './ProfileWallpaper';
 import UserBlock from './UserContent/UserBlock';
-import PostsBlock from './Posts/PostsBlock';
+import PostsBlockContainer from './Posts/PostsBlockContainer';
 
 const Profile = (props) => {
   return (
@@ -14,7 +14,7 @@ const Profile = (props) => {
         name='Lao Yong'
         birth='10.10.2000'
       />
-      <PostsBlock dispatch={props.dispatch} state={props.state} />
+      <PostsBlockContainer store={props.store} />
     </div>
   );
 };
