@@ -1,7 +1,25 @@
 export const ADD_POST = 'ADD_POST';
 export const UPDATE_POST_TITLE = 'UPDATE_POST_TITLE';
 
-const profileReducer = (state, action) => {
+let initialState = {
+  postsData: [
+    {
+      id: 1,
+      src: 'https://profilepicture7.com/img/img_dongman/2/1075497004.jpg',
+      title: 'About my weekend',
+      likes: 17
+    },
+    {
+      id: 2,
+      src: 'https://profilepicture7.com/img/img_dongman/2/1075497004.jpg',
+      title: 'Some picture with my crush',
+      likes: '31'
+    }
+  ],
+  newPostTitle: ''
+};
+
+const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_POST:
       let post = {
