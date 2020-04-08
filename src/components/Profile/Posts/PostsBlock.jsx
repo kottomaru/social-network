@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './PostsBlock.module.css';
 import Post from './Post/Post';
 
-import { addPostAction, updatePostTitleAction } from '../../../redux/state';
+import { addPostAction, updatePostTitleAction } from '../../../redux/profile-reducer';
 
 const PostsBlock = (props) => {
   let postsElements = props.state.postsData
