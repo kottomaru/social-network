@@ -4,8 +4,8 @@ import Friend from './Friend/Friend';
 
 const Friends = (props) => {
 
-  let friendsElements = props.state.friends
-    .map((friend) => <Friend img={friend.img} name={friend.name} />)
+  // let friendsElements = props.state.friends { friendsElements }
+  //   .map((friend) => <Friend img={friend.img} name={friend.name} />)
 
   return (
     <div className={styles.container}>
@@ -13,7 +13,6 @@ const Friends = (props) => {
         Friends
       </div>
       <div className={styles.elements}>
-        {friendsElements}
       </div>
     </div>
   );

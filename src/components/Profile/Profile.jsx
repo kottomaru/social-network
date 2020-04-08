@@ -14,7 +14,7 @@ const Profile = (props) => {
         name='Lao Yong'
         birth='10.10.2000'
       />
-      <PostsBlockContainer store={props.store} />
+      <PostsBlockContainer />
     </div>
   );
 };
