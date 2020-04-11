@@ -9,7 +9,7 @@ import DialogsContainer from './components/Dialogs/DialogsContainer';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
-
+import MembersContainer from './components/Members/MembersContainer';
 
 function App(props) {
   return (
@@ -23,6 +23,9 @@ function App(props) {
           <Route
             path='/dialogs'
             render={() => <DialogsContainer />} />
+          <Route
+            path='/members'
+            render={() => <MembersContainer />} />
           <Route path='/news' component={News} />
           <Route path='/music' component={Music} />
           <Route path='/settings' component={Settings} />

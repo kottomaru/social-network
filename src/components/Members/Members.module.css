@@ -1,0 +1,26 @@
+.avatar {
+  width: 5em;
+  height: 5em;
+  border-radius: 5em;
+}
+
+.container {
+  display: flex;
+  padding: 1em;
+}
+
+.containerPhoto {
+  display: flex;
+  flex-direction: column;
+}
+
+.memberInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1em;
+}
+
+.memberName {
+  font-weight: bold;
+}
