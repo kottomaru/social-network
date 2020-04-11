@@ -24,3 +24,7 @@
 .memberName {
   font-weight: bold;
 }
+
+.showContainer {
+  padding: 1em;
+}
