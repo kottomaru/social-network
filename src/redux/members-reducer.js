@@ -36,7 +36,7 @@ const membersReducer = (state = initialState, action) => {
       })
     }
     case SET_MEMBERS:
-      return {...state, members: [ ...state.members, action.members ]};
+      return {...state, members: [ ...state.members, ...action.members ]};
     default:
       return state;
   }
