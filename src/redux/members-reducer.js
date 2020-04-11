@@ -1,16 +1,14 @@
 export const FOLLOW = 'FOLLOW';
 export const UNFOLLOW = 'UNFOLLOW';
 export const SET_MEMBERS = 'SET_MEMBERS';
+export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+export const SET_TOTAL_MEMBERS = 'SET_TOTAL_MEMBERS';
 
 let initialState = {
-  members: [
-    { id: 1, avatarUrl: 'https://vignette.wikia.nocookie.net/villains/images/a/a4/Akihiko_Kayaba.png/revision/latest?cb=20130806233643',
-      follow: true, name: 'Kayaba Akihiko', location: {country: 'Japan', city: 'Tokyo'}},
-    { id: 2, avatarUrl: 'https://vignette.wikia.nocookie.net/naruto/images/0/0c/Madara_img2.png/revision/latest/scale-to-width-down/340?cb=20160115141947',
-      follow: false, name: 'Madara Uchiha', location: {country: 'Japan', city: 'Osaka'}},
-    { id: 3, avatarUrl: 'https://images.shoutwiki.com/jojodiamondrecords/3/3e/Profile_Giorno.png',
-      follow: true, name: 'Jorno Jovanna', location: {country: 'Japan', city: 'Saitama'}},
-  ]
+  members: [],
+  pageSize: 5,
+  totalUserCount: 0,
+  currentPage: 1
 };
 
 const membersReducer = (state = initialState, action) => {
@@ -36,7 +34,11 @@ const membersReducer = (state = initialState, action) => {
       })
     }
     case SET_MEMBERS:
-      return {...state, members: [ ...state.members, ...action.members ]};
+      return {...state, members: action.members };
+    case SET_CURRENT_PAGE:
+      return {...state, currentPage: action.page};
+    case SET_TOTAL_MEMBERS:
+      return {...state, totalUserCount: action.total};
     default:
       return state;
   }
@@ -45,5 +47,7 @@ const membersReducer = (state = initialState, action) => {
 export const followAC = (memberId) => ({ type: FOLLOW, memberId });
 export const unfollowAC = (memberId) => ({ type: UNFOLLOW, memberId });
 export const setMembersAC = (members) => ({ type: SET_MEMBERS, members });
+export const setCurrentPageAC = (page) => ({ type: SET_CURRENT_PAGE, page });
+export const setTotalMembersAC = (total) => ({ type: SET_TOTAL_MEMBERS, total });
 
 export default membersReducer;

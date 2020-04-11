@@ -1,11 +1,14 @@
 import React from 'react';
 import Members from './Members';
 import {connect} from 'react-redux';
-import {followAC, unfollowAC, setMembersAC} from '../../redux/members-reducer';
+import {followAC, unfollowAC, setMembersAC, setTotalMembersAC, setCurrentPageAC} from '../../redux/members-reducer';
 
 let mapStateToProps = (state) => {
   return {
-    members: state.membersPage.members
+    members: state.membersPage.members,
+    pageSize: state.membersPage.pageSize,
+    totalUserCount: state.membersPage.totalUserCount,
+    currentPage: state.membersPage.currentPage
   }
 }
 
@@ -19,6 +22,12 @@ let mapDispatchToProps = (dispatch) => {
     },
     setMembers: (members) => {
       dispatch(setMembersAC(members));
+    },
+    setCurrentPage: (page) => {
+      dispatch(setCurrentPageAC(page));
+    },
+    setTotalMembers: (total) => {
+      dispatch(setTotalMembersAC(total));
     }
   }
 }

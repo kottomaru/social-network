@@ -25,6 +25,22 @@
   font-weight: bold;
 }
 
+.selected {
+  font-weight: bold;
+}
+
 .showContainer {
   padding: 1em;
+}
+
+.pagination {
+  cursor: pointer;
+  padding: 1em;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.pagination span {
+  padding: 0.5em;
 }
