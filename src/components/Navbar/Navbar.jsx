@@ -26,7 +26,6 @@ const Navbar = (props) => {
           <NavLink to='members' activeClassName={styles.active}>Members</NavLink>
         </div>
       </nav>
-      <Friends />
     </div>
   );
 };
