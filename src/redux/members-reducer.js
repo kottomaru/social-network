@@ -48,11 +48,11 @@ const membersReducer = (state = initialState, action) => {
   }
 }
 
-export const followAC = (memberId) => ({ type: FOLLOW, memberId });
-export const unfollowAC = (memberId) => ({ type: UNFOLLOW, memberId });
-export const setMembersAC = (members) => ({ type: SET_MEMBERS, members });
-export const setCurrentPageAC = (page) => ({ type: SET_CURRENT_PAGE, page });
-export const setTotalMembersAC = (total) => ({ type: SET_TOTAL_MEMBERS, total });
-export const toggleIsFetchingAC = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
+export const follow = (memberId) => ({ type: FOLLOW, memberId });
+export const unfollow = (memberId) => ({ type: UNFOLLOW, memberId });
+export const setMembers = (members) => ({ type: SET_MEMBERS, members });
+export const setCurrentPage = (page) => ({ type: SET_CURRENT_PAGE, page });
+export const setTotalMembers = (total) => ({ type: SET_TOTAL_MEMBERS, total });
+export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
 
 export default membersReducer;

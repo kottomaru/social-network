@@ -4,12 +4,12 @@ import Preloader from '../Preloader';
 import * as axios from 'axios';
 import {connect} from 'react-redux';
 import {
-  followAC,
-  unfollowAC,
-  setMembersAC,
-  setTotalMembersAC,
-  setCurrentPageAC,
-  toggleIsFetchingAC
+  follow,
+  unfollow,
+  setMembers,
+  setTotalMembers,
+  setCurrentPage,
+  toggleIsFetching
 } from '../../redux/members-reducer';
 
 class MembersContainer extends React.Component {
@@ -69,27 +69,7 @@ let mapStateToProps = (state) => {
   }
 }
 
-let mapDispatchToProps = (dispatch) => {
-  return {
-    follow: (memberId) => {
-      dispatch(followAC(memberId));
-    },
-    unfollow: (memberId) => {
-      dispatch(unfollowAC(memberId));
-    },
-    setMembers: (members) => {
-      dispatch(setMembersAC(members));
-    },
-    setCurrentPage: (page) => {
-      dispatch(setCurrentPageAC(page));
-    },
-    setTotalMembers: (total) => {
-      dispatch(setTotalMembersAC(total));
-    },
-    toggleIsFetching: (isFetching) => {
-      dispatch(toggleIsFetchingAC(isFetching));
-    }
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(MembersContainer);
+export default connect(mapStateToProps,
+  { follow, unfollow, setMembers,
+    setCurrentPage, setTotalMembers, toggleIsFetching})
+  (MembersContainer);
