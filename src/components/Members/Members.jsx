@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Members.module.css';
 import userPhoto from '../../assets/images/user.jpg';
 import { NavLink } from 'react-router-dom';
+import * as axios from 'axios';
 
 let Members = (props) => {
   let pagesCount = Math.ceil(props.totalUserCount / props.pageSize);
@@ -20,8 +21,36 @@ let Members = (props) => {
                 <img src={member.photos.large} className={styles.avatar} />
               </NavLink>
               { member.follow
-                ? <button onClick={ () => { props.unfollow(member.id) } }>Unfollow</button>
-                : <button onClick={ () => { props.follow(member.id) } }>Follow</button>}
+                ? <button onClick={ () => {
+                  axios
+                    .delete(`https://social-network.samuraijs.com/api/1.0/follow/${member.id}`,
+                    {
+                      withCredentials: true,
+                      headers: {
+                        "API-KEY": "221c1805-6931-4c1e-840a-129a3f65d9c0"
+                      }
+                    })
+                    .then(res => {
+                      if(res.data.resultCode == 0) {
+                        props.unfollow(member.id);
+                      }
+                  });
+                 } }>Unfollow</button>
+                : <button onClick={ () => {
+                  axios
+                    .post(`https://social-network.samuraijs.com/api/1.0/follow/${member.id}`, {},
+                    {
+                      withCredentials: true,
+                      headers: {
+                        "API-KEY": "221c1805-6931-4c1e-840a-129a3f65d9c0"
+                      }
+                    })
+                    .then(res => {
+                      if(res.data.resultCode == 0) {
+                        props.follow(member.id);
+                      }
+                  });
+                 } }>Follow</button>}
             </div>
             <div className={styles.memberInfo}>
               <div className={styles.memberName}>
