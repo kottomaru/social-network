@@ -1,5 +1,6 @@
 export const ADD_POST = 'ADD_POST';
 export const UPDATE_POST_TITLE = 'UPDATE_POST_TITLE';
+export const SET_MEMBER_PROFILE = 'SET_MEMBER_PROFILE';
 
 let initialState = {
   postsData: [
@@ -16,7 +17,8 @@ let initialState = {
       likes: '31'
     }
   ],
-  newPostTitle: ''
+  newPostTitle: '',
+  memberProfile: null
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -38,6 +40,11 @@ const profileReducer = (state = initialState, action) => {
         ...state,
         newPostTitle: action.text
       }
+    case SET_MEMBER_PROFILE:
+      return {
+        ...state,
+        memberProfile: action.profile
+      }
     default:
       return state;
   }
@@ -48,5 +55,6 @@ export const updatePostTitleAction = (text) => ({
   type: UPDATE_POST_TITLE,
   text: text
 });
+export const setMemberProfile = (profile) => ({ type: SET_MEMBER_PROFILE, profile });
 
 export default profileReducer;

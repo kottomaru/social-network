@@ -6,3 +6,17 @@
 .header img {
   width: 60px;
 }
+
+.loginContainer {
+  float: right;
+}
+
+.loginContainer a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.login {
+  color: white;
+}

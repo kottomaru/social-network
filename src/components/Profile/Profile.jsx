@@ -8,12 +8,7 @@ const Profile = (props) => {
   return (
     <div className={styles.content}>
       <ProfileWallpaper src='https://wallpaperaccess.com/full/21591.jpg' />
-      <UserBlock
-        src='https://profilepicture7.com/img/img_dongman/2/1075497004.jpg'
-        username='LaoY'
-        name='Lao Yong'
-        birth='10.10.2000'
-      />
+      <UserBlock profile={props.profile} />
       <PostsBlockContainer />
     </div>
   );

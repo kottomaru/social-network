@@ -21,8 +21,8 @@ class MembersContainer extends React.Component {
       .then(res => {
       this.props.setMembers(res.data.items)
       this.props.toggleIsFetching(false);
-      if (res.data.totalCount > 25) {
-        this.props.setTotalMembers(25);
+      if (res.data.totalCount > 50) {
+        this.props.setTotalMembers(50);
       } else {
         this.props.setTotalMembers(res.data.totalCount);
       }
