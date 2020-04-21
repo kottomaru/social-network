@@ -11,13 +11,13 @@ import {
   setCurrentPage,
   toggleIsFetching
 } from '../../redux/members-reducer';
-import {getMembers} from '../../api/api';
+import {membersAPI} from '../../api/api';
 
 class MembersContainer extends React.Component {
 
   componentDidMount() {
     this.props.toggleIsFetching(true);
-    getMembers(this.props.currentPage, this.props.pageSize).then(response => {
+    membersAPI.getMembers(this.props.currentPage, this.props.pageSize).then(response => {
       this.props.setMembers(response.items)
       this.props.toggleIsFetching(false);
       if (response.totalCount > 50) {
@@ -31,7 +31,7 @@ class MembersContainer extends React.Component {
   onPageChange = (page) => {
     this.props.toggleIsFetching(true);
     this.props.setCurrentPage(page);
-    getMembers(page, this.props.pageSize).then(response => {
+    membersAPI.getMembers(page, this.props.pageSize).then(response => {
       this.props.toggleIsFetching(false);
       this.props.setMembers(response.items);
     });

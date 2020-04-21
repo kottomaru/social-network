@@ -3,7 +3,7 @@ import styles from './Members.module.css';
 import userPhoto from '../../assets/images/user.jpg';
 import { NavLink } from 'react-router-dom';
 import * as axios from 'axios';
-import {follow, unfollow} from '../../api/api';
+import {membersAPI} from '../../api/api';
 
 let Members = (props) => {
   let pagesCount = Math.ceil(props.totalUserCount / props.pageSize);
@@ -23,7 +23,7 @@ let Members = (props) => {
               </NavLink>
               { member.follow
                 ? <button onClick={ () => {
-                  unfollow(member.id)
+                  membersAPI.unfollow(member.id)
                     .then(response => {
                       if(response.resultCode == 0) {
                         props.unfollow(member.id);
@@ -31,7 +31,7 @@ let Members = (props) => {
                   });
                  } }>Unfollow</button>
                 : <button onClick={ () => {
-                  follow(member.id)
+                  membersAPI.follow(member.id)
                     .then(response => {
                       if(response.resultCode == 0) {
                         props.follow(member.id);
