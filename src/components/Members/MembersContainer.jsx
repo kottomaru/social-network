@@ -11,23 +11,19 @@ import {
   setCurrentPage,
   toggleIsFetching
 } from '../../redux/members-reducer';
+import {getMembers} from '../../api/api';
 
 class MembersContainer extends React.Component {
 
   componentDidMount() {
     this.props.toggleIsFetching(true);
-    axios
-      .get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`,
-      {
-        withCredentials: true
-      })
-      .then(res => {
-      this.props.setMembers(res.data.items)
+    getMembers(this.props.currentPage, this.props.pageSize).then(response => {
+      this.props.setMembers(response.items)
       this.props.toggleIsFetching(false);
-      if (res.data.totalCount > 50) {
+      if (response.totalCount > 50) {
         this.props.setTotalMembers(50);
       } else {
-        this.props.setTotalMembers(res.data.totalCount);
+        this.props.setTotalMembers(response.data.totalCount);
       }
     });
   }
@@ -35,14 +31,9 @@ class MembersContainer extends React.Component {
   onPageChange = (page) => {
     this.props.toggleIsFetching(true);
     this.props.setCurrentPage(page);
-    axios
-      .get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`,
-      {
-        withCredentials: true
-      })
-      .then(res => {
+    getMembers(page, this.props.pageSize).then(response => {
       this.props.toggleIsFetching(false);
-      this.props.setMembers(res.data.items);
+      this.props.setMembers(response.items);
     });
   }
 
