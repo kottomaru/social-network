@@ -9,7 +9,8 @@ import {
   setMembers,
   setTotalMembers,
   setCurrentPage,
-  toggleIsFetching
+  toggleIsFetching,
+  toggleFollowingInProgress
 } from '../../redux/members-reducer';
 import {membersAPI} from '../../api/api';
 
@@ -50,6 +51,8 @@ class MembersContainer extends React.Component {
                  onPageChange={this.onPageChange}
                  currentPage={this.props.currentPage}
                  members={this.props.members}
+                 toggleFollowingInProgress={this.props.toggleFollowingInProgress}
+                 followingInProgress={this.props.followingInProgress}
         />
       </>
     );
@@ -62,11 +65,13 @@ let mapStateToProps = (state) => {
     pageSize: state.membersPage.pageSize,
     totalUserCount: state.membersPage.totalUserCount,
     currentPage: state.membersPage.currentPage,
-    isFetching: state.membersPage.isFetching
+    isFetching: state.membersPage.isFetching,
+    followingInProgress: state.membersPage.followingInProgress
   }
 }
 
 export default connect(mapStateToProps,
   { follow, unfollow, setMembers,
-    setCurrentPage, setTotalMembers, toggleIsFetching})
+    setCurrentPage, setTotalMembers, toggleIsFetching,
+    toggleFollowingInProgress})
   (MembersContainer);

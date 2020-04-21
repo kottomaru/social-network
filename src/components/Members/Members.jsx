@@ -22,21 +22,25 @@ let Members = (props) => {
                 <img src={member.photos.large} className={styles.avatar} />
               </NavLink>
               { member.follow
-                ? <button onClick={ () => {
+                ? <button disabled={props.followingInProgress.some(id => id === member.id)} onClick={ () => {
+                  props.toggleFollowingInProgress(true, member.id);
                   membersAPI.unfollow(member.id)
                     .then(response => {
                       if(response.resultCode == 0) {
                         props.unfollow(member.id);
                       }
+                      props.toggleFollowingInProgress(false, member.id);
                   });
                  } }>Unfollow</button>
-                : <button onClick={ () => {
-                  membersAPI.follow(member.id)
-                    .then(response => {
-                      if(response.resultCode == 0) {
-                        props.follow(member.id);
-                      }
-                  });
+                : <button disabled={props.followingInProgress.some(id => id === member.id)} onClick={ () => {
+                    props.toggleFollowingInProgress(true, member.id);
+                    membersAPI.follow(member.id)
+                      .then(response => {
+                        if(response.resultCode == 0) {
+                          props.follow(member.id);
+                        }
+                        props.toggleFollowingInProgress(false, member.id);
+                    });
                  } }>Follow</button>}
             </div>
             <div className={styles.memberInfo}>

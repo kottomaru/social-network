@@ -4,13 +4,15 @@ export const SET_MEMBERS = 'SET_MEMBERS';
 export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 export const SET_TOTAL_MEMBERS = 'SET_TOTAL_MEMBERS';
 export const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
+export const TOGGLE_FOLLOWING_IN_PROGRESS = 'TOGGLE_FOLLOWING_IN_PROGRESS';
 
 let initialState = {
   members: [],
   pageSize: 5,
   totalUserCount: 0,
   currentPage: 1,
-  isFetching: false
+  isFetching: false,
+  followingInProgress: []
 };
 
 const membersReducer = (state = initialState, action) => {
@@ -43,6 +45,13 @@ const membersReducer = (state = initialState, action) => {
       return {...state, totalUserCount: action.total};
     case TOGGLE_IS_FETCHING:
       return {...state, isFetching: action.isFetching};
+    case TOGGLE_FOLLOWING_IN_PROGRESS:
+      return {
+        ...state,
+        followingInProgress: action.isFetching
+          ? [...state.followingInProgress, action.memberId]
+          : state.followingInProgress.filter(id => id != action.memberId)
+      };
     default:
       return state;
   }
@@ -54,5 +63,7 @@ export const setMembers = (members) => ({ type: SET_MEMBERS, members });
 export const setCurrentPage = (page) => ({ type: SET_CURRENT_PAGE, page });
 export const setTotalMembers = (total) => ({ type: SET_TOTAL_MEMBERS, total });
 export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
+export const toggleFollowingInProgress = (isFetching, memberId) =>
+  ({ type: TOGGLE_FOLLOWING_IN_PROGRESS, isFetching, memberId });
 
 export default membersReducer;
